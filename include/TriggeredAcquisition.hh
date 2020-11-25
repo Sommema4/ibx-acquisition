@@ -146,6 +146,7 @@ private:
 
   //int * signal_start_ptr;
   uint32_t * signal_start_ptr;
+  uint32_t * signal_start_ptrB;
   int trig_ptr;
   int mulcount;
 };
