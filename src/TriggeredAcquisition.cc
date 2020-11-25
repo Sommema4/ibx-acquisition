@@ -221,6 +221,10 @@ void TriggeredAcquisition::Measure(float length, MeasurementLengthType mlt) {
       trig_ptr = iface->GetOscilloscopeMemory()->triggerpointer;
       signal_start_ptr = iface->GetOscilloscopeChannelA(); // FIX depending on measure channel
 
+      // NEWFIXHERE
+      signal_start_ptrB = iface->GetOscilloscopeChannelB();
+      // END NEW FIX
+
       // Write Data depending on method
       if(writeoff == WRITE_OFF_BINARY_SINGLE) {
 	WriteOffBinarySingle();
@@ -475,6 +479,13 @@ inline void TriggeredAcquisition::WriteOffAsciiSingle() {
   for (int i=0; i < tracelength; i++) {
     fprintf(fh, "%d ", signal_start_ptr[(tracestart+i)%BUF]);
   }
+
+  // NEWFIXHERE
+  // just put channel B data in the same file (alternating lines)
+  for (int i=0; i < tracelength; i++) {
+    fprintf(fh, "%d ", signal_start_ptrB[(tracestart+i)%BUF]);
+  }
+  // END NEWFIXHERE  
   fprintf(fh, "\n");
 }
 
