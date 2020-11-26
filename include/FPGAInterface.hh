@@ -26,9 +26,9 @@
 #include <stdint.h>
 
 #define OSCBASE         0x40100000
-#define OSCBASESIZE     0x30000
-#define OSCCHAOFFSET    0x10000
-#define OSCCHBOFFSET    0x20000
+#define OSCBASESIZE     0x800
+#define OSCCHAOFFSET    0x400
+#define OSCCHBOFFSET    0x800
 
 #define ADCBITS 10
 
