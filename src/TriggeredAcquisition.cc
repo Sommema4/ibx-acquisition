@@ -202,7 +202,7 @@ void TriggeredAcquisition::Measure(float length, MeasurementLengthType mlt) {
     trig_test = iface->GetOscilloscopeMemory()->trigger;
     while (trig_test!=0) {
       triggerduration = std::chrono::duration_cast<millisec_t>(std::chrono::high_resolution_clock::now() - triggerstarttime);
-      if(triggerduration.count() / 1000 > 10) {
+      if(triggerduration.count() / 1000 > 1800) {
 	std::cout << "Did not trigger for more than 10 s - will stop now!" << std::endl;
 	std::cout << "This could be due to wrong trigger settings." << std::endl;
 	runcondition = false;
